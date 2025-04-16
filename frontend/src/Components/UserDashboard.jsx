@@ -1,78 +1,42 @@
-import React, { useEffect } from "react";
-import { Search, User, Filter, Heart, ShoppingBag } from "lucide-react";
-import Homebg from '../assets/Homebg.png';
-
-const categories = ["Men", "Women", "Kids"];
+import React from 'react';
+import { FaFire, FaStar, FaUsers, FaTruck } from 'react-icons/fa';
 
 const UserDashboard = () => {
-  useEffect(() => {
-    document.title = "Tee Galaxy | Marvel Collection";
-  }, []);
-
   return (
-    <div className="font-sans bg-gray-100 min-h-screen">
-      {/* Top Navbar */}
-      <div className="bg-blue-900 text-white px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        {/* Left: Logo */}
-        <div className="text-2xl font-bold tracking-widest">
-          <span className="text-yellow-400">TEE</span> Galaxy
-        </div>
+    <div className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen px-8 pt-24 pb-10 text-center">
+      <h1 className="text-5xl font-extrabold text-pink-500 mb-4 animate-fade-slide-in">Fandom Fashion</h1>
+      <p className="text-lg text-gray-300 mb-10 animate-fade-slide-in delay-200">
+        Discover our collection of premium T-shirts featuring your favorite characters from Marvel, DC, Comics, and Anime universes.
+      </p>
 
-        {/* Center: Search Bar */}
-        <div className="flex-grow flex justify-center">
-          <div className="flex items-center border border-gray-300 rounded-full px-4 w-full md:w-[40%] bg-white text-gray-700 h-12">
-            <input
-              type="text"
-              placeholder="Search By Products"
-              className="flex-grow outline-none text-lg"
-            />
-            <Search className="w-6 h-6 text-gray-600" />
-          </div>
+      {/* Information Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+        <div className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition hover:scale-105 hover:shadow-lg">
+          <FaFire className="text-pink-500 text-3xl mb-2 mx-auto" />
+          <h2 className="text-lg font-bold text-white">Trending Designs</h2>
+          <p className="text-sm text-gray-400">Updated weekly</p>
         </div>
-
-        {/* Right: Login + User Icon */}
-        <div className="flex items-center space-x-4">
-          <span className="cursor-pointer">Login</span>
-          <User className="w-6 h-6" />
+        <div className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition hover:scale-105 hover:shadow-lg">
+          <FaStar className="text-pink-500 text-3xl mb-2 mx-auto" />
+          <h2 className="text-lg font-bold text-white">Premium Quality</h2>
+          <p className="text-sm text-gray-400">100% cotton</p>
+        </div>
+        <div className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition hover:scale-105 hover:shadow-lg">
+          <FaUsers className="text-pink-500 text-3xl mb-2 mx-auto" />
+          <h2 className="text-lg font-bold text-white">Fan Favorite</h2>
+          <p className="text-sm text-gray-400">5000+ reviews</p>
+        </div>
+        <div className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition hover:scale-105 hover:shadow-lg">
+          <FaTruck className="text-pink-500 text-3xl mb-2 mx-auto" />
+          <h2 className="text-lg font-bold text-white">Fast Shipping</h2>
+          <p className="text-sm text-gray-400">2-3 day delivery</p>
         </div>
       </div>
 
-{/* Category Section */}
-<div className="bg-white px-6 py-3 shadow-md flex flex-col md:flex-row items-center justify-between gap-4">
-  {/* Segmented Category Buttons */}
-  <div className="flex-grow flex justify-center ml-4"> {/* Added ml-4 here */}
-    <div className="flex items-center bg-yellow-400 rounded-full shadow overflow-hidden h-12">
-      {categories.map((category, index) => (
-        <button
-          key={category}
-          className={`px-6 text-black hover:bg-yellow-300 transition h-full text-lg ${
-            index !== 0 ? "border-l border-yellow-300" : ""
-          }`}
-        >
-          {category}
-        </button>
-      ))}
-    </div>
-  </div>
-
-  {/* Right-side Icons */}
-  <div className="flex space-x-4">
-    <Filter className="w-6 h-6 text-gray-600 cursor-pointer" />
-    <Heart className="w-6 h-6 text-gray-600 cursor-pointer" />
-    <ShoppingBag className="w-6 h-6 text-gray-600 cursor-pointer" />
-  </div>
-</div>
-
-
-
-      {/* Marvel Banner Section */}
-      <div className="relative overflow-hidden">
-        <img
-          src={Homebg} // Replace with actual image path
-          alt="Marvel Collection"
-          className=""
-        />
-      </div>
+      {/* Shop Now Button */}
+      <button className="bg-pink-500 text-white py-2 px-6 rounded-full text-lg mt-8 hover:bg-pink-600 transition">
+        Shop Now
+      </button>
     </div>
   );
 };
