@@ -58,7 +58,7 @@ const Category = () => {
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-gray-900 rounded-xl overflow-hidden w-full max-w-[320px] h-[520px] flex flex-col shadow-lg transition-transform hover:scale-105 mx-4"
+            className="bg-black rounded-xl overflow-hidden w-full max-w-[320px] h-[520px] flex flex-col shadow-lg transition-transform hover:scale-105 mx-4"
           >
             <div className="flex-shrink-0">
               <img

@@ -3,7 +3,13 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-gray-800 text-white pt-16 ">
+    <footer className="bg-gradient-to-b from-gray-900 to-black text-white pt-16 ">
+      <div className="text-center">
+  <h3 className="text-xl font-bold text-white mb-4">What Our Fans Say</h3>
+  <p className="text-gray-400 italic">"Best anime shirts I’ve ever bought!" - A Happy Customer</p>
+</div>
+<br />
+<br />
       <div className="max-w-7xl mx-auto px-8 lg:px-12 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16 border-b border-gray-700 pb-16">
           
