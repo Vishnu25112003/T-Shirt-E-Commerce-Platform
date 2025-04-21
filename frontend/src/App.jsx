@@ -11,6 +11,7 @@ import Login from "./Login";
 import Category from "./Components/Category";
 import Footer from "./Components/Footer";
 import Signin from "./Signin";
+import AboutUs from "./AboutUs"; // adjust path if needed
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -41,6 +42,7 @@ const App = () => {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
       </Layout>
     </Router>

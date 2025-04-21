@@ -46,21 +46,34 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-4">
-      <div className="w-full max-w-md transform transition-all duration-300 hover:scale-[1.01]">
-        <div className="bg-white rounded-2xl p-8 shadow-2xl space-y-6 animate-fade-in-up">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-1">
+            {/* 🌌 Background Video */}
+            <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="https://res.cloudinary.com/dypbvh8u8/video/upload/v1744820053/batman-in-night-city.3840x2160_vhtft3.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+     <div className="w-full max-w-md transform transition-all duration-300 hover:scale-[1.01]">
+        <div className="bg-white/10 backdrop-blur-lg border border-pink-500 rounded-2xl p-4 shadow-2xl space-y-6 animate-fade-in-up
+        transition-all duration-300 hover:scale-[1.01]
+        ring-2 ring-white/40 hover:ring-white/80">
           <div className="text-center space-y-2">
-            <h1 className="text-3xl font-bold text-slate-900 animate-slide-in-top">
-              Join Us Bro!
+            <h1 className="text-3xl text-white font-bold  animate-slide-in-top">
+              Signup for TeeGalaxy
             </h1>
-            <p className="text-slate-600 text-sm font-medium">
+            <p className="text-white text-sm font-medium">
               Create Your Account
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-white mb-1">
                 Full Name
               </label>
               <input
@@ -68,13 +81,13 @@ const Signin = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                placeholder="John Doe"
+                placeholder="Your Name"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-white mb-1">
                 Email
               </label>
               <input
@@ -88,7 +101,7 @@ const Signin = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-white mb-1">
                 Password
               </label>
               <input
@@ -102,7 +115,7 @@ const Signin = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-white mb-1">
                 Confirm Password
               </label>
               <input
@@ -117,7 +130,7 @@ const Signin = () => {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg font-medium transition-all transform hover:scale-[1.01] active:scale-95"
+              className="w-full bg-pink-500 hover:bg-pink-700 text-white py-2.5 rounded-lg font-medium transition-all transform hover:scale-[1.01] active:scale-95"
             >
               Sign Up
             </button>
@@ -128,26 +141,26 @@ const Signin = () => {
               <div className="w-full border-t border-slate-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-slate-500">
+              <span className="px-2 bg-black/20 text-white">
                 OR CONTINUE WITH
               </span>
             </div>
           </div>
 
           <div className="flex gap-4">
-            <button className="flex items-center justify-center gap-2 w-full py-2.5 border border-slate-300 rounded-lg font-medium text-slate-700 hover:bg-slate-50 transition-all transform hover:scale-[1.01]">
+            <button className="flex items-center justify-center gap-2 w-full py-2.5 border border-slate-300 rounded-lg font-medium text-white hover:bg-slate-50 transition-all transform hover:scale-[1.01]">
               <FcGoogle className="text-xl" /> Google
             </button>
-            <button className="flex items-center justify-center gap-2 w-full py-2.5 border border-slate-300 rounded-lg font-medium text-slate-700 hover:bg-slate-50 transition-all transform hover:scale-[1.01]">
+            <button className="flex items-center justify-center gap-2 w-full py-2.5 border border-slate-300 rounded-lg font-medium text-white hover:bg-slate-50 transition-all transform hover:scale-[1.01]">
               <AiFillApple className="text-xl" /> Apple
             </button>
           </div>
 
-          <p className="text-center text-sm text-slate-600">
+          <p className="text-center text-sm text-white">
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-blue-600 hover:underline font-medium"
+              className="text-pink-500   hover:underline font-medium"
             >
               Login
             </Link>{" "}

@@ -33,7 +33,7 @@ const generateProducts = () => {
       image: "https://veirdo.in/cdn/shop/files/Black-Spidey-Original-Marvel-Oversized-Tee-Veirdo-7773.jpg?v=1707127141",
     },
   ];
-  return Array.from({ length: 10 }, (_, index) => ({
+  return Array.from({ length: 9 }, (_, index) => ({
     ...baseProducts[index % baseProducts.length],
     id: index + 1
   }));
@@ -43,10 +43,10 @@ const products = generateProducts();
 
 const Category = () => {
   return (
-    <div className="min-h-screen px-12 bg-gradient-to-b from-gray-800 to-gray-900 text-white">
+    <div className="min-h-screen px-12 bg-gradient-to-b from-gray-800 to-gray-900 text-white flex flex-col justify-between">
       {/* Filter Buttons */}
       <div className="flex flex-wrap justify-center gap-6 mb-16 pt-8">
-        <button className="px-6 py-2 rounded-full bg-pink-500 text-white font-semibold hover:bg-pink-600 transition">ALL</button>
+        <button className="px-6 py-2 rounded-full bg-pink-500 text-white font-semibold hover:bg-pink-600 transition">Trending</button>
         <button className="px-6 py-2 rounded-full bg-gray-700 hover:bg-pink-600">⚡ MARVEL</button>
         <button className="px-6 py-2 rounded-full bg-gray-700 hover:bg-pink-600">💥 DC</button>
         <button className="px-6 py-2 rounded-full bg-gray-700 hover:bg-pink-600">📖 COMICS</button>
@@ -97,6 +97,13 @@ const Category = () => {
           </div>
         ))}
       </div>
+
+      {/* All Products Button */}
+      <div className="flex justify-center mt-12">
+      <button className="animate-hover ...rest-of-your-classes animate-hover px-10 py-4 bg-gradient-to-r from-pink-900 to-pink-500 text-white font-bold text-lg rounded-full shadow-lg transition-all duration-300 ease-in-out hover:scale-105">
+  View All Products
+</button>
+</div>
     </div>
   );
 };

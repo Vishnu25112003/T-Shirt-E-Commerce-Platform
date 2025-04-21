@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaShoppingCart, FaUser, FaSearch } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = React.useState(false);
@@ -29,7 +31,20 @@ const Navbar = () => {
 
       {/* Right Side */}
       <div className="flex items-center gap-6 text-lg relative" ref={searchRef}>
+
         
+
+        <Link to="#" className="hover:text-blue-500 transition">
+  Home
+</Link>
+
+
+
+
+
+        <Link to="/about" className="hover:text-blue-500 transition">
+  About 
+</Link>
         {/* Search */}
         <div className="flex items-center gap-2 relative">
           <FaSearch
@@ -48,16 +63,13 @@ const Navbar = () => {
             />
           </div>
         </div>
-
         {/* Cart */}
         <div className="relative">
           <FaShoppingCart className="cursor-pointer hover:text-pink-400 transition duration-300" />
           <span className="absolute -top-2 -right-2 bg-pink-500 text-white rounded-full text-xs px-1">0</span>
         </div>
-
-        {/* User Icon */}
-        <FaUser className="text-xl" />
-
+                {/* User Icon */}
+                <FaUser className="text-xl" />
         {/* Login Button */}
         <button
           onClick={handleLoginClick}
