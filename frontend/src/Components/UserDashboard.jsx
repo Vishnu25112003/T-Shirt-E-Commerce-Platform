@@ -64,9 +64,10 @@ const UserDashboard = () => {
 
 
       {/* Shop Now Button */}
-      <button className="bg-pink-500 text-white py-2 px-6 rounded-full text-lg mt-8 hover:bg-pink-600 transition">
-        Shop Now
-      </button>
+      <button className="backdrop-blur-lg bg-white/10 text-white py-4 px-8 rounded-lg text-xl mt-8 border border-white/20 shadow-lg hover:bg-white/10 transition">
+  Shop Now
+</button>
+
     </div>
   );
 };

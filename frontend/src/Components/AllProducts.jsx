@@ -3,14 +3,15 @@ import productsData from './productsData';
 import ProductCard from './ProductCard';
 import FilterSidebar from './FilterSidebar';
 
+
 const AllProducts = () => {
   const [maxPrice, setMaxPrice] = useState(60000);
 
   const filteredProducts = productsData.filter((product) => product.price <= maxPrice);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 md:p-10">
-      <h1 className="text-2xl font-bold mb-6">All Products</h1>
+    <div className="min-h-screen bg-gray-600 to-black p-6 md:p-10">
+      <h1 className="text-3xl mt-10 ml-23 font-bold text-white mb-6">All Products</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* Left Filters */}

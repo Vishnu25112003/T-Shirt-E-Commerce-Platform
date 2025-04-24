@@ -1,5 +1,7 @@
 import React from "react";
 import { FaStar, FaCartPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 // Generate 20 products by duplicating the original array with web image URLs
 const generateProducts = () => {
@@ -58,7 +60,7 @@ const Category = () => {
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-black rounded-xl overflow-hidden w-full max-w-[320px] h-[520px] flex flex-col shadow-lg transition-transform hover:scale-105 mx-4"
+            className="bg-black/40 rounded-xl overflow-hidden w-full max-w-[320px] h-[520px] flex flex-col shadow-lg transition-transform hover:scale-105 mx-4"
           >
             <div className="flex-shrink-0">
               <img
@@ -100,9 +102,12 @@ const Category = () => {
 
       {/* All Products Button */}
       <div className="flex justify-center mt-12">
-      <button className="animate-hover ...rest-of-your-classes animate-hover px-10 py-4 bg-gradient-to-r from-pink-900 to-pink-500 text-white font-bold text-lg rounded-full shadow-lg transition-all duration-300 ease-in-out hover:scale-105">
-  View All Products
-</button>
+      <Link to="/all-products">
+  <button className="animate-hover px-10 py-4 bg-gradient-to-r from-pink-900 to-pink-500 text-white font-bold text-lg rounded-full shadow-lg transition-all duration-300 ease-in-out hover:scale-105">
+    View All Products
+  </button>
+</Link>
+
 </div>
     </div>
   );
