@@ -1,6 +1,6 @@
 import React from 'react';
 
-const categories = ["MARVEL", "DC", "ANIME", "GAMING"];
+const categories = ["MARVEL", "DC", "ANIME", "COMIC", "FANTACY", "GAMING",];
 
 const FilterSidebar = ({ maxPrice, setMaxPrice, selectedSize, setSelectedSize, selectedCategories, setSelectedCategories }) => {
   

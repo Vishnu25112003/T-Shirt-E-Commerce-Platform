@@ -5,8 +5,8 @@ import { GiBatMask } from "react-icons/gi";
 
 const images = [
   'https://res.cloudinary.com/dypbvh8u8/image/upload/v1744793845/venom_banner_1440x550_492dcbdb-bf5b-48a3-a12c-8acb803da9b8_bc3vct.webp',
-  'https://res.cloudinary.com/dypbvh8u8/image/upload/v1744793844/Inside-Banner-Msite-Black-Panther-1668149531_gb7hbv.webp',
-  'https://res.cloudinary.com/dypbvh8u8/image/upload/v1744793844/msite-marvel_floating_tee-1743501436_fmulmi.webp',
+  'https://res.cloudinary.com/dypbvh8u8/image/upload/v1746714742/OFF_MERCH_BANNER_2_wtxil3.webp',
+  'https://res.cloudinary.com/dypbvh8u8/image/upload/v1746714885/website-banner--marvel_2_d5db8ffa-76f7-4ea9-92f8-f2d3e4abb806_geyhko.webp',
 ];
 
 const UserDashboard = () => {
@@ -21,11 +21,9 @@ const UserDashboard = () => {
 
   return (
     
-    <div className="bg-gradient-to-b from-black to-gray-800 text-white min-h-screen px-8 pt-24 pb-10 text-center">
+    <div className="bg-gradient-to-b from-black to-gray-600 text-white min-h-screen px-8 pt-24 pb-10 text-center">
       <h1 className="text-5xl font-extrabold text-pink-500 mb-4 animate-fade-slide-in flex items-center justify-center gap-3">
-  <GiSpiderMask className="text-6xl text-pink-500" />
   Fandom Fashion
-  <GiBatMask className="text-6xl text-pink-500" />
 </h1>
       <p className="text-lg text-gray-300 mb-10 animate-fade-slide-in delay-200">
         Discover our collection of premium T-shirts featuring your favorite characters from Marvel, DC, Comics, and Anime universes.

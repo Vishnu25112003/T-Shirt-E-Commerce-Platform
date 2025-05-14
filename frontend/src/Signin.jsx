@@ -1,72 +1,95 @@
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { AiFillApple } from "react-icons/ai";
-import { useNavigate, useLocation } from "react-router-dom";
+import {
+  AiFillApple,
+  AiOutlineEye,
+  AiOutlineEyeInvisible,
+} from "react-icons/ai";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
 
 const Signin = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
       toast.error("Passwords do not match!", {
         position: "top-center",
         autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
         theme: "colored",
       });
       return;
     }
 
-    toast.success("Successfully Registered!", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
+    try {
+      const response = await fetch("http://localhost:5000/api/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-    setTimeout(() => {
-      navigate(location.state?.from || "/");
-    }, 2200);
+      const contentType = response.headers.get("content-type");
+
+      if (!response.ok || !contentType?.includes("application/json")) {
+        throw new Error("Invalid server response");
+      }
+
+      const data = await response.json();
+
+      toast.success("🎉 Signup Successful!", {
+        position: "top-center",
+        autoClose: 2500,
+        theme: "colored",
+      });
+
+      setTimeout(() => {
+        navigate(location.state?.from || "/login");
+      }, 2600);
+    } catch (error) {
+      console.error("Signup error:", error);
+      toast.error("🚫 Signup failed. Please try again.", {
+        position: "top-center",
+        autoClose: 2500,
+        theme: "colored",
+      });
+    }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-1">
-            {/* 🌌 Background Video */}
-            <video
+      {/* 🌌 Background Video */}
+      <video
         autoPlay
         loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="https://res.cloudinary.com/dypbvh8u8/video/upload/v1744820053/batman-in-night-city.3840x2160_vhtft3.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+        <source
+          src="https://res.cloudinary.com/dypbvh8u8/video/upload/v1744820053/batman-in-night-city.3840x2160_vhtft3.mp4"
+          type="video/mp4"
+        />
       </video>
-     <div className="w-full max-w-md transform transition-all duration-300 hover:scale-[1.01]">
-        <div className="bg-white/10 backdrop-blur-lg border border-pink-500 rounded-2xl p-4 shadow-2xl space-y-6 animate-fade-in-up
-        transition-all duration-300 hover:scale-[1.01]
-        ring-2 ring-white/40 hover:ring-white/80">
+
+      <div className="w-full max-w-md z-10 transform transition-all duration-300 hover:scale-[1.01]">
+        <div className="bg-white/5  hover:bg-black/60 hover:backdrop-blur-lg border border-white/30 rounded-2xl px-8 py-6 shadow-2xl space-y-6 ring-1 ring-white/10 hover:ring-white/60 transition-all duration-300">
+
           <div className="text-center space-y-2">
-            <h1 className="text-3xl text-white font-bold  animate-slide-in-top">
+            <h1 className="text-3xl text-white font-bold">
               Signup for TeeGalaxy
             </h1>
-            <p className="text-white text-sm font-medium">
+            <p className="text-pink-500 text-sm font-medium">
               Create Your Account
             </p>
           </div>
@@ -77,13 +100,14 @@ const Signin = () => {
                 Full Name
               </label>
               <input
-                type="text"
+               type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                className="w-full px-4 py-2 rounded-lg border border-slate-300  text-white focus:ring-2 focus:ring-blue-500"
                 placeholder="Your Name"
                 required
-              />
+                />
+
             </div>
 
             <div>
@@ -94,38 +118,56 @@ const Signin = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                className="w-full px-4 py-2 rounded-lg border border-slate-300  text-white focus:ring-2 focus:ring-blue-500"
                 placeholder="your@email.com"
                 required
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-white mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                placeholder="**********"
-                required
-              />
-            </div>
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="w-full relative">
+                <label className="block text-sm font-medium text-white mb-1">
+                  Password
+                </label>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-2 rounded-lg border border-slate-300  text-white focus:ring-2 focus:ring-blue-500"
+                  placeholder="**********"
+                  required
+                />
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-9 cursor-pointer text-xl text-gray-500"
+                >
+                  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                </span>
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium text-white mb-1">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                placeholder="**********"
-                required
-              />
+              <div className="w-full relative">
+                <label className="block text-sm font-medium text-white mb-1">
+                  Confirm Password
+                </label>
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full px-4 py-2 rounded-lg border border-slate-300  text-white focus:ring-2 focus:ring-blue-500"
+                  placeholder="**********"
+                  required
+                />
+                <span
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-9 cursor-pointer text-xl text-gray-500"
+                >
+                  {showConfirmPassword ? (
+                    <AiOutlineEyeInvisible />
+                  ) : (
+                    <AiOutlineEye />
+                  )}
+                </span>
+              </div>
             </div>
 
             <button
@@ -136,22 +178,19 @@ const Signin = () => {
             </button>
           </form>
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-300"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-black/20 text-white">
-                OR CONTINUE WITH
-              </span>
-            </div>
+          <div className="flex items-center my-4">
+            <div className="flex-grow border-t border-slate-300"></div>
+            <span className="mx-4 text-white text-xs tracking-wider font-semibold opacity-70">
+              OR CONTINUE WITH
+            </span>
+            <div className="flex-grow border-t border-slate-300"></div>
           </div>
 
           <div className="flex gap-4">
-            <button className="flex items-center justify-center gap-2 w-full py-2.5 border border-slate-300 rounded-lg font-medium text-white hover:bg-slate-50 transition-all transform hover:scale-[1.01]">
+            <button className="flex items-center justify-center gap-2 w-full py-2.5 border border-white/30 bg-white/20 text-white rounded-lg font-medium hover:bg-white/30 transition-all transform hover:scale-[1.01]">
               <FcGoogle className="text-xl" /> Google
             </button>
-            <button className="flex items-center justify-center gap-2 w-full py-2.5 border border-slate-300 rounded-lg font-medium text-white hover:bg-slate-50 transition-all transform hover:scale-[1.01]">
+            <button className="flex items-center justify-center gap-2 w-full py-2.5 border border-white/30 bg-white/20 text-white rounded-lg font-medium hover:bg-white/30 transition-all transform hover:scale-[1.01]">
               <AiFillApple className="text-xl" /> Apple
             </button>
           </div>
@@ -160,11 +199,10 @@ const Signin = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-pink-500   hover:underline font-medium"
+              className="text-pink-500 hover:underline font-medium"
             >
               Login
-            </Link>{" "}
-            {/* Use Link instead of <a> */}
+            </Link>
           </p>
         </div>
 
